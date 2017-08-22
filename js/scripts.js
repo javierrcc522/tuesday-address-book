@@ -49,15 +49,16 @@ $(document).ready(function() {
     var inputtedState = $(this).find("input.new-state").val();
     var newAddress = new Address(inputtedStreet, inputtedCity, inputtedState);
     newContact.addresses.push(newAddress);
+
     });
 
     $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>");
     $(".contact").last().click(function() {
-    $("#show-contact").show();
-    $("#show-contact h2").text(newContact.firstName);
-    $(".first-name").text(newContact.firstName);
-    $(".last-name").text(newContact.lastName);
-  });
+      $("#show-contact").show();
+      $("#show-contact h2").text(newContact.firstName);
+      $(".first-name").text(newContact.firstName);
+      $(".last-name").text(newContact.lastName);
+    });
     $(".contact").last().click(function() {
     $("ul#addresses").text("");
     newContact.addresses.forEach(function(address) {
@@ -69,5 +70,23 @@ $(document).ready(function() {
     $("input.new-street").val("");
     $("input.new-city").val("");
     $("input.new-state").val("");
+
+    /// this will refresh the form after multiple address are enter//
+    ///important///
+    $("#new-addresses").empty();
+    $("#new-addresses").append('<div class="new-address">' +
+                                 '<div class="form-group">' +
+                                   '<label for="new-street">Street</label>' +
+                                   '<input type="text" class="form-control new-street">' +
+                                 '</div>' +
+                                 '<div class="form-group">' +
+                                   '<label for="new-city">City</label>' +
+                                   '<input type="text" class="form-control new-city">' +
+                                 '</div>' +
+                                 '<div class="form-group">' +
+                                   '<label for="new-state">State</label>' +
+                                   '<input type="text" class="form-control new-state">' +
+                                 '</div>' +
+                               '</div>');
   });
 });
