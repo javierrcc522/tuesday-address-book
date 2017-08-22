@@ -13,10 +13,14 @@ function Address(street, city, state) {
   this.city = city;
   this.state = state;
 
+
+
+
   Address.prototype.fullAddress = function() {
   return this.street + ", " + this.city + ", " + this.state;
 }
 }
+
 
 //user interface logic
 $(document).ready(function() {
